@@ -31,6 +31,14 @@ WORKDIR /
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /grpcurl /bin/grpcurl
+
+COPY --from=builder /lib /lib
+COPY --from=builder /bin/sh /bin/sh
+COPY --from=builder /bin/ls /bin/ls
+COPY --from=builder /bin/cp /bin/cp
+COPY --from=builder /bin/mv /bin/mv
+COPY --from=builder /bin/cat /bin/cat
+
 USER grpcurl
 
-ENTRYPOINT ["/bin/grpcurl"]
+ENTRYPOINT ["/bin/sh"]
